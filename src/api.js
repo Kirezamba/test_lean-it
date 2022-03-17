@@ -36,7 +36,7 @@ const generateData = () => {
     return +number;
   };
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 1000000; i++) {
     data.push({
       id: Math.ceil(Math.random() * 1000000),
       name: getWord(),
