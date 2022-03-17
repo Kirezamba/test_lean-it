@@ -42,13 +42,15 @@ export default function EnhancedTable({ data }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const handleRequestSort = (property) => {
+  const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
   };
 
-  const handleChangePage = (newPage) => {
+  const handleClick = (event, name) => {};
+
+  const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
@@ -78,9 +80,14 @@ export default function EnhancedTable({ data }) {
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={row.name}>
-                      <TableCell padding="checkbox"></TableCell>
-                      <TableCell component="th" id={labelId} scope="row" padding="none">
+                    <TableRow
+                      hover
+                      onClick={(event) => handleClick(event, row.name)}
+                      role="checkbox"
+                      tabIndex={-1}
+                      key={row.name}
+                    >
+                      <TableCell component="th" id={labelId} scope="row" padding="normal">
                         {row.id}
                       </TableCell>
                       <TableCell align="right">{row.name}</TableCell>
